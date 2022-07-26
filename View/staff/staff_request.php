@@ -1,40 +1,51 @@
-<style>
-input {
-	width: 90%;
-	height: 50px;
-	border-style: inset;
-	margin: 8px 0;
-}
-button {
-	color: white;
-	background-color: blue;
-	font-size: 100%;
-	border-style: outset;
-	margin: 0 40%;
-}
-</style>
-<section class="main" style=" width: 50%;">
+ <section class="main">
       <section class="attendance">
         <div class="attendance-list">
-            <h1>Total Money : <?= $money['money']; ?></h1>
-            <form method="POST" action="?controller=staff&action=send_request" id="contactForm" name="contactForm">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="form-group">
-						<input type="text" class="form-control" name="withdraw" id="" placeholder="You want to withdraw">
-					</div>
-				</div>
-				
-				<div class="col-md-12">
-					<div class="form-group">
-						<!-- <input type="submit" value="Add Account" name="add_account" class="btn btn-primary"> -->
-						<input type="submit" name="send_request"value="Send Request" class="btn btn-primary" />
+            <h1>Request Payment</h1>
+            <table class="table">
+            <thead>
+                <tr>
+                <th>STT</th>
+                <th>MONEY</th>
+                <th>DAY REQUEST</th>
+                <th>DAY PAYMENT</th>
+                <th>STATUS</th>
+                <th>ACCTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    $stt=1;
+                    foreach($dataPayment as $values){
+                ?>
+                <tr>
+                    <td><?php echo $stt; ?></td>
+                    <td><?php echo $values['money']; ?></td>
+                    <td><?php echo $values['day_request']; ?></td>
+                    <td><?php echo $values['payment_day']; ?></td>
+                    <td><?php echo $values['status']; ?></td>
+                    <td>
                         
-						<div class="submitting"></div>
-					</div>
-				</div>
-			</div>
-		</form>
+                        <?php
+                            if(($values['status'] == "Approve") or ($values['status'] == "Reject")){
+                                echo '';
+                            }else{
+                        ?>
+                        <a href="index.php?controller=staff&action=cancel&id=<?php echo $values['id']; ?>" title="cancel"><i class="fas fa-times-circle"></i></a> 
+                        
+                        <?php
+                            }
+                        ?>
+
+                    </td>  
+                </tr>
+                <?php
+                    $stt++;
+                    }
+                ?>
+            </tbody>
+          </table>
+		  <a href="index.php?controller=staff&action=request">Send Request</a>
         </div>
       </section>
     </section>

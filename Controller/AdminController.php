@@ -67,6 +67,8 @@
         }
         case 'list_account':{
             $dataAccount =  $account->getAllData();
+            // var_dump($dataAccount);
+            // exit();
             require_once('View/admin/accounts/list_account.php');
             break;
         }

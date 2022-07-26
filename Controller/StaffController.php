@@ -69,7 +69,12 @@
             break;
         }
         case 'list_account':{
-            $dataAccount =  $account->getAllData();
+            if(isset($_SESSION['staff'])){
+                $id = $_SESSION['staff']['id'];
+                $dataAccount =  $account->getAllData($id);
+                
+            }
+            
             require_once('View/staff/accounts/list_account.php');
             break;
         }
@@ -143,13 +148,19 @@
             break;
         }
         case 'staff_request':{
+            $dataPayment = $payment->getAllData();
+
+            require_once('View/staff/staff_request.php');
+            break;
+        }
+        case 'request':{
             if($_SESSION['staff']){
                 $id = $_SESSION['staff']['id'];
 
                 $money = $account->getMoney($id);
             }
 
-            require_once('View/staff/staff_request.php');
+            require_once('View/staff/send_request.php');
             break;
         }
 
@@ -172,7 +183,7 @@
                         if($payment->insertDataSendRequest($id_staff,$money)){
                             $payment->updateMoney( $id_staff,$moneyLeft);
                             echo '<script>alert("Yêu cầu đã được gửi đi")</script>';
-                            echo '<script>window.location.href = "?controller=staff&action=list_account"</script>';
+                            echo '<script>window.location.href = "?controller=staff&action=staff_request"</script>';
                         }
                     }else{
                         echo '<script>alert("Một tháng chỉ được request một lần")</script>';
@@ -196,6 +207,24 @@
                 //     }
             }
             // require_once('View/admin/accounts/add_account.php');
+            break;
+        }
+
+        case 'cancel':{
+            if(isset($_GET['id'])){
+                $id = $_GET['id'];
+
+                $staff = $payment->getIdStaff($id);
+                $money_staff= $account->getMoney($staff['id_staff']);
+                // var_dump( $money_staff);
+                // exit();
+                $money = $staff['money'] + $money_staff['money'];
+                $account->reject($id);
+                $account->updateMoney($staff['id_staff'],$money);
+                echo '<script>alert("Yêu cầu không được thực hiện")</script>';
+                echo '<script>window.location.href = "?controller=staff&action=staff_request"</script>';
+            }
+            
             break;
         }
         // default:{

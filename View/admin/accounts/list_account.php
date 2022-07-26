@@ -15,7 +15,6 @@
                 <th>PHONE</th>
                 <th>ADDRESS</th>
                 <th>USER/STAFF</th>
-                <th>ADD BY STAFF</th>
                 <th>ACCTION</th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@
                         <td><?php echo $values['phone']; ?></td>
                         <td><?php echo $values['address']; ?></td>
                         <td>Staff</td>
-                        <td><?php echo $values['id_staff_add']; ?></td>
                         <td>
                             <a href="index.php?controller=admin&action=edit_account&id=<?php echo $values['id']; ?>"><i class="fas fa-edit"></i></a> 
                             <a href="index.php?controller=admin&action=delete_account&id=<?php echo $values['id']; ?>" title="delete"><i class="fas fa-eraser"></i></a> 
@@ -49,7 +47,6 @@
                         <td><?php echo $values['phone']; ?></td>
                         <td><?php echo $values['address']; ?></td>
                         <td>User</td>
-                        <td><?php echo $values['id_staff_add']; ?></td>
                         <td>
                             <a href="index.php?controller=admin&action=edit_account&id=<?php echo $values['id']; ?>"><i class="fas fa-edit"></i></a> 
                             <a href="index.php?controller=admin&action=delete_account&id=<?php echo $values['id']; ?>" title="delete"><i class="fas fa-eraser"></i></a> 

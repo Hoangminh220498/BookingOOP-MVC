@@ -22,7 +22,7 @@
 
         public function getAllData(){
             $sql = "SELECT * FROM accounts";
-            $this->execute($sql);
+            $this->execute($sql);  
             if($this->numRows()==0){
                 $data = 0;
             }
@@ -105,8 +105,8 @@
         }
 
 
-        public function checkLogin($username, $password){
-            $sql = "SELECT * FROM accounts where username='$username' AND accounts.password='$password'";
+        public function checkLogin($email, $password){
+            $sql = "SELECT * FROM accounts where email='$email' AND accounts.password='$password'";
             $result = $this->conn->query($sql);
             if($result->num_rows > 0){
                  $data = $result->fetch_assoc();
@@ -180,6 +180,15 @@
             $sql = "UPDATE `request_payments` SET `status`= 'Reject' WHERE id = $id";
             return $this->execute($sql);
         }
+
+        public function nameStaff($id){
+            $sql = "SELECT `username` FROM `accounts` WHERE id = $id";
+            $result = $this->conn->query($sql);
+            $rows = mysqli_fetch_assoc($result);
+            return $rows;     
+        }
+       
+
 
     }
 ?>

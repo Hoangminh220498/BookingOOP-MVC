@@ -20,9 +20,9 @@
                 </li>
             </ul>
             <label for="login-input-user" class="login__label">
-                Username
+                Email
             </label>
-            <input id="login-input-user" class="login__input" type="text" name="username" value="">
+            <input id="login-input-user" class="login__input" type="text" name="email" value="">
             <label for="login-input-password" class="login__label">
                 Password
             </label>

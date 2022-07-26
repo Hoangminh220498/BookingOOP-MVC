@@ -92,9 +92,10 @@
             $sql = "SELECT status, month(day_request) as month FROM `request_payments` WHERE id_staff = $id ORDER BY id desc";
             $result = $this->conn->query($sql);
             $rows = mysqli_fetch_assoc($result);
-            return $rows; 
-            
+            return $rows;             
         }
+
+        
         
     }
 ?>

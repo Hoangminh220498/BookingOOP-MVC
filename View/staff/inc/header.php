@@ -28,7 +28,7 @@
         </a></li>
         <li><a href="index.php?controller=staff&action=staff_request">
           <i class="fas fa-money-bill-alt"></i>
-          <span class="nav-item">Total money</span>
+          <span class="nav-item">Request</span>
         </a></li>
 
         <li><a href="././logout.php" class="logout">

@@ -29,10 +29,10 @@
 
     switch($action){
         case 'login':{
-            if (isset($_POST['username']) && isset($_POST['password']) ) {
+            if (isset($_POST['email']) && isset($_POST['password']) ) {
                 // var_dump($_POST);
-                if ($account->checkLogin($_POST['username'], $_POST['password'])) {
-                    $row = $account->checkLogin($_POST['username'],$_POST['password']);
+                if ($account->checkLogin($_POST['email'], $_POST['password'])) {
+                    $row = $account->checkLogin($_POST['email'],$_POST['password']);
                    
                     if ($row['role'] == 2) {
                         $_SESSION['admin'] = $row;
