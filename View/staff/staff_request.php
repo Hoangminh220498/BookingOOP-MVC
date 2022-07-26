@@ -1,7 +1,7 @@
  <section class="main">
       <section class="attendance">
         <div class="attendance-list">
-            <h1>Request Payment</h1>
+            <h1>Request History</h1>
             <table class="table">
             <thead>
                 <tr>

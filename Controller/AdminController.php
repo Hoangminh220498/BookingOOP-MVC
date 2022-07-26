@@ -172,7 +172,7 @@
         case 'approve':{
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-                $day = date('Y-m-d');
+                $day = date('Y-m-d' );
 
                 $account->approve($id,$day);
                 echo '<script>alert("Đã Thanh Toán")</script>';
